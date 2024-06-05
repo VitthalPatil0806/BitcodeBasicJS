@@ -1,0 +1,79 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="tbl">
+        <thead>
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>vitthal</td>
+                <td>98.00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>sushant</td>
+                <td>70.00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>kartik</td>
+                <td>89.43</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="area"></div>
+
+    <script>
+        var tbl = document.getElementById("tbl");
+        tbl.addEventListener("click",fun1,flase);
+        let area = document.getElementById("area");
+
+        function fun1(event){
+            td = event.target;
+            tr = td.parentNode;
+
+            var arr = tr.children;
+            console.log(arr);
+
+            document.getElementById("area").innerHTML = "<br> RollNo="+arr[0].textContent+"Name="+arr[1]+"marks"+arr[2];
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="open" onclick="fun1()">
+    <input type="button" value="close" onclick="fun2()">
+
+    <script>
+        function fun1(){
+             nwin = window.open();
+            nwin.document.write("hello");
+            nwin.document.bgColor="yellow";
+        }
+        function fun2(){
+            nwin.close;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #area{
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    product name: <input type="text" id="txtname"><br>
+    product price: <input type="text" id="txtprice"><br>
+    <input type="button" value="add" id="btn">
+    <input type="button" value="update" id="btn1">
+    <input type="button" value="delete" id="btn2">
+    <input type="button" value="addCard" id="btn3">
+    <ul id="list"></ul> <br> <br>
+    <div id="area"></div>
+
+
+    <script>
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click",fun1,false);
+
+        let list1 = document.getElementById("list");
+        list1.addEventListener('click',fun2,false);
+
+        let btn1 = document.getElementById("btn1");
+        btn1.addEventListener("click",fun3,false);
+
+        let btn2 = document.getElementById("btn2");
+        btn2.addEventListener("click",fun4,false);
+
+        let btn3 = document.getElementById("btn3");
+        btn3.addEventListener("click",fun5,false);
+
+        var arr = new Array();
+    
+        function Product(name,price){
+            this.prodname = name;
+            this.prodprice = price;
+        }
+
+        function fun1(){
+            let txtname = document.getElementById("txtname").value;
+            let txtprice = document.getElementById("txtprice").value;
+            let obj = new Product(txtname,txtprice);
+            arr.push(obj);
+            display();
+
+
+        }
+        function display(){
+            let str = "";
+            for(let i=0;i<arr.length;i++){
+                str += "<li>"+arr[i].prodname+"*"+arr[i].prodprice+"</li>";
+            }
+            list1.innerHTML = str;
+            txtname.value = "";
+            txtprice.value = "";
+        }
+
+        function fun2(event){
+            let x = event.target.textContent;
+            let arr1 = x.split("*");
+            document.getElementById("txtname").value = arr1[0];
+            document.getElementById("txtprice").value = arr1[1];
+            document.getElementById("txtname").readOnly = true;
+            
+        }
+
+        function fun3(){
+            let val1 = document.getElementById("txtname").value;
+            let val2 = document.getElementById("txtprice").value;
+
+            for(let i=0;i<arr.length;i++){
+                if(arr[i].prodname == val1){
+                    arr[i].prodprice = val2;
+                }
+            }
+            display();
+            document.getElementById("txtname").value = "";
+            document.getElementById("txtprice").value = "";
+            document.getElementById("txtname").readOnly = false;
+        }
+
+        function fun4(){
+            let val1 = document.getElementById("txtname").value;
+            let val2 = document.getElementById("txtprice").value;
+
+            for(let i=0;i<arr.length;i++){
+                if(arr[i].prodname == val1 && arr[i].prodprice == val2){
+                    arr.splice(i,1);
+                }
+            }
+            display();
+            document.getElementById("txtname").value = "";
+            document.getElementById("txtprice").value = "";
+        }
+
+        function Cart(name,price){
+            this.cname = name;
+            this.cprice = price;
+        }
+
+        var arr2 = new Array();
+        function fun5(){
+            let val1 = document.getElementById("txtname").value;
+            let val2 = document.getElementById("txtprice").value;
+
+            let obj2 = new Cart(val1,val2);
+            arr2.push(obj2);
+
+            let area = document.getElementById("area");
+            let str = "";
+            let i;
+            let sum =  0;
+           for( i=0;i<arr2.length;i++){
+            str += arr2[i].cname+" "+arr2[i].cprice;
+           
+            sum = sum + parseInt(arr2[i].cprice);
+            area.innerHTML = str + "<br>" + "total =" + sum;
+           }
+        }
+    </script>
+</body>
+</html>

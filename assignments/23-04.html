@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num"><br>
+    <input type="button" id="btn" value="add">
+    <div id="div1"></div>
+
+    <script>
+        let btn = document.getElementById("btn");
+        var div1 = document.getElementById("div1");
+         arr = new Array();
+         var worker = new Worker("demo.js");
+        btn.addEventListener("click",function(){
+            let num = document.getElementById("num").value;
+            if(arr.length>5 ){
+                throw Error("array is full");
+            }
+            else if(num<0){
+                throw Error("number is negative");
+            }
+            else if(isNaN(num)){
+                throw Error("it is not a number");
+            }
+            else{
+                arr.push(num);
+            }
+
+            worker.postMessage(arr);
+            worker.addEventListener("message",function(event){
+            var res = event.data;
+            console.log(res);
+        })
+        })
+
+    </script>
+</body>
+</html>

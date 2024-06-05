@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img{
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="images">
+        
+    </div>
+    <input type="button" value="start" id="start">
+    <input type="button" value="fast" id="fast">
+    <input type="button" value="slow" id="slow">
+    <input type="button" value="stop" id="stop">
+
+    <script>
+        let arr = ["<img src='../img1.jpg'>","<img src='../img2.jpg'>","<img src='../img3.jpg'>","<img src='../img4.jpg'>"];
+
+        let start = document.getElementById("start");
+        let stops = document.getElementById("stop");
+        let fast = document.getElementById("fast");
+        let slow = document.getElementById("slow");
+        let images = document.getElementById("images");
+        let str="";
+        let i=0
+
+        start.addEventListener("click",function(){
+            dum = setInterval(function(){
+             images.innerHTML = arr[i];
+             i++;
+             if(i==arr.length){
+                i=0;
+             }
+            },3000)
+        }
+        );
+
+        fast.addEventListener("click",function(){
+            lum =  setInterval(function(){
+             images.innerHTML = arr[i];
+             i++;
+             if(i==arr.length){
+                i=0;
+             }
+            },1000)
+        })
+
+        slow.addEventListener("click",function(){
+            fum = setInterval(function(){
+             images.innerHTML = arr[i];
+             i++;
+             if(i==arr.length){
+                i=0;
+             }
+            },5000)
+        })
+
+        stops.addEventListener("click",function(){
+            clearInterval(dum);
+            clearInterval(fum);
+            clearInterval(lum);
+        })
+    </script>
+</body>
+</html>

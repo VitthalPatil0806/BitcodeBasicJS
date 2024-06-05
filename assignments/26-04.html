@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td{
+            border: 2px double black;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="show table" onclick="funshow()">
+    <div id="area"></div>
+    
+    <script>
+        var area = document.getElementById("area");
+        function funshow(){
+            var obj = new XMLHttpRequest();
+            obj.open("get","https://dummyjson.com/recipes");
+            obj.send();
+
+            obj.onreadystatechange = function(){
+                if(obj.readyState==4 && obj.status==200){
+                    var data = obj.responseText;
+                    var jdata = JSON.parse(data)
+                    console.log(typeof(jdata));
+                    display(jdata.recipes);
+                }
+            }
+        }
+
+        function display(datas){
+            var str = "<table><tr><td>Id</td><td>Name</td><td>Difficulty</td>";
+               for(let i=0;i<datas.length;i++){
+                    str += "<tr><td>"+datas[i].id+"</td><td>"+datas[i].name+"</td><td>"+datas[i].difficulty+"</td></tr>";
+                    document.getElementById("area").innerHTML = str+"</table>";
+               }
+        }
+    </script>
+</body>
+</html>

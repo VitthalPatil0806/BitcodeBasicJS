@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num">
+    <input type="button" value="click" id="btn">
+    <div id="area"></div>
+    <script>
+        let arr = new Array();
+        let txt = document.getElementById("num");
+        let btn = document.getElementById("btn");
+        let area =  document.getElementById("area");
+        let i=0
+        btn.addEventListener("click",function(){
+            
+            if(isNaN(txt.value)){
+                throw new Error("entered number is not a number")
+            }
+            else if(txt.value<0){
+                throw new Error("entered number is -ve")
+            }
+            else if(arr.length>=5){
+                throw new Error("array is out of bound!!!")
+            }
+            else{
+            console.log(typeof(txt.value));
+            arr.push(txt.value);
+            for(;i<arr.length;i++){
+                area.innerHTML += i+" "+ txt.value +" "+arr[i]*arr[i]+"<br>";
+                console.log(arr);
+                txt.value = "";
+            }
+            }
+        })
+    </script>
+</body>
+</html>

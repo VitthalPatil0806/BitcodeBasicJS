@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="area"></div><br>
+    <input type="text" id="txt" maxlength="1">
+    <input type="button" value="add" onclick="funadd()"><br><br>
+    <div id="hint"></div><br><br>
+    <p id="msg"></p>
+
+    <script>
+        let arr = [{'scriptLang':'javascript'},{'frontend':'react'},{'searchEngine':'google'},{'myCountry':'india'},{'myName':'vitthal'}];
+        let arr2 = [];
+
+        let randomword = arr[Math.floor(Math.random()*arr.length)];
+
+        function displayword(){
+            let area = document.getElementById("area");
+            area.innerHTML = "";
+            // for(let letter of randomword){
+            //     if(arr2.includes(letter)){
+            //         area.innerHTML += letter;
+            //     }
+            //     else{
+            //         area.innerHTML += "_ ";
+            //     }
+            // }
+
+             values = Object.values(randomword).toString();
+             keys = Object.keys(randomword);
+            for(let ele in randomword){
+                var key = Object.keys(randomword);
+                for(let letter of values){
+                    if(arr2.includes(letter)){
+                        area.innerHTML += letter;
+                    }
+                    else{
+                        area.innerHTML += "_ ";
+                    }
+                }
+            }
+            document.getElementById("hint").innerHTML = "Hint: "+keys;
+        }
+
+        function funadd(){
+            let txt = document.getElementById("txt").value;
+            if(arr2.includes(txt)){
+                document.getElementById("msg").textContent = "repeated"
+                return;
+            }
+            arr2.push(txt);
+            document.getElementById("txt").value = "";
+            displayword();
+
+            var res = "";
+            for(let i=0;i<arr2.length;i++){
+                res += arr2[i];
+            }
+            if(values.split("").every(leter=>res.includes(leter))){
+                    document.getElementById("msg").textContent = "congratulations u find word";
+            }
+            txt = "";
+        }
+
+        displayword();
+    </script>
+</body>
+</html>

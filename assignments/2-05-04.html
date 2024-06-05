@@ -1,0 +1,152 @@
+<!-- third -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,tr,td{
+            border: 1px double black;
+        }
+        #upd{
+            margin-left: 180px;
+        }
+        #del{
+            margin-left: 180px;
+        }
+    </style>
+</head>
+<body>
+   <table>
+    <thead>
+        <tr>
+            <th>RollNo</th>
+            <th>Name</th>
+            <th>Marks</th>
+        </tr>
+    </thead>
+
+    <tbody id="tbody"></tbody>
+   </table>
+
+   <input type="button" value="upadate" id="upd">
+   <input type="button" value="delete" id="del">
+
+   <div id="area"></div>
+   <script>
+let area = document.getElementById("area");
+let upd = document.getElementById("upd");
+let del = document.getElementById("del");
+
+
+
+upd.style.display = "none";
+del.style.display = "none";
+let arr = [ {rollNo:1,name:"vitthal",marks:98.00},
+                {rollNo:2,name:"jay",marks:76.54},
+                {rollNo:3,name:"nilesh",marks:89.67},
+                {rollNo:4,name:"nisha",marks:67.98}]
+    
+
+    let tbody = document.getElementById("tbody");
+
+    let str = "";
+
+    function display(){
+        for(let i=0;i<arr.length;i++){
+         a = arr[i];
+
+     "</tr>"  
+
+          str += "<tr>"+
+                "<td>"+arr[i].rollNo+"</td>"+
+                "<td>"+arr[i].name+"</td>"+
+                "<td>"+arr[i].marks+"</td>"+
+               "</tr>"  
+        tbody.innerHTML = str;       
+    }
+    }
+ 
+    display();
+
+    let sort = document.querySelectorAll("th");
+sort.forEach(ele=>ele.addEventListener("click",function(){
+    for(let i=0;i<arr.length;i++){
+        for(let j=i+1;j<arr.length;j++){
+            if(arr[i].marks<arr[j].marks){
+                let temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    display();
+}));
+
+   let table = document.querySelector("tbody");
+   table.addEventListener("mouseover",function(event){
+     
+
+    val = event.target;
+    upd.style.display = "block";
+    del.style.display = "block";
+
+      rollbox = document.createElement("input");
+    rollbox.setAttribute("type","text");
+    rollbox.setAttribute("id","roll1");
+    rollbox.setAttribute("readonly",true);
+    let rollbr = document.createElement("br");
+    
+    namebox = document.createElement("input");
+    namebox.setAttribute("type","text");
+    namebox.setAttribute("id","name1");
+    namebox.setAttribute("readonly",true);
+    let namebr = document.createElement("br");
+
+     markbox = document.createElement("input");
+    markbox.setAttribute("type","text");
+    markbox.setAttribute("id","mark1");
+    let markbr = document.createElement("br");
+
+    let genbr = document.createElement("br");
+
+    area.appendChild(rollbox);
+    area.appendChild(rollbr);
+    area.appendChild(namebox);
+    area.appendChild(namebr);
+    area.appendChild(markbox);
+    area.appendChild(markbr);
+    area.appendChild(genbr);
+    let row = event.target.parentElement.children;
+
+    rollbox.value = row[0].textContent;
+    namebox.value = row[1].textContent;
+    markbox.value = row[2].textContent;    
+
+   })
+   
+   upd.addEventListener("click",function(){
+    for(let i=0;i<arr.length;i++){
+        if(arr[i].rollNo == rollbox.value && arr[i].name == namebox.value){
+            arr[i].marks = parseInt(markbox.value);
+
+            display();
+        
+        }
+    }
+})
+
+    del.addEventListener("click",function(){
+      let arr = val.parentElement.parentElement.children;  
+      
+      for(let i=0;i<arr.length;i++){
+        console.log(arr[i].children.removeChild(val));
+      }
+      display();
+    })
+
+   </script>
+</body>
+</html> 
+

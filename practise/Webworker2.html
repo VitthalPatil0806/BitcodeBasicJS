@@ -1,0 +1,27 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input type="button" value="Start" onclick="funstart()"><br><br>
+        <input type="button" value="Stop" onclick="funstop()"><br><br>
+        <div id="d1"></div>
+        <script>
+            var div = document.getElementById("d1");
+            var w;
+
+            function funstart(){
+                if(w==undefined){
+                    w = new Worker("worker1.js");
+                }
+                w.addEventListener("message",funmsg,false);
+                function funmsg(event){
+                    div.innerHTML = event.data;
+                }
+            }
+            function funstop(event){
+                w.terminate();
+                w = undefined;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="prodname" placeholder="enter product name"><br><br>
+    <input type="text" id="prodprice" placeholder="enter product price"><br><br>
+    <input type="button" id="add" value="add"><br><br>
+    <input type="button" value="update" id="upd"><br><br>
+    <input type="button" value="delete" id="del"><br><br>
+
+    <ul id="list"></ul>
+    <div id="div1"></div>
+
+    <script>
+        var list = document.getElementById("list");
+        let add = document.getElementById("add");
+        let update = document.getElementById("upd");
+        let del = document.getElementById("del");
+
+
+        if(localStorage.getItem("li")==undefined){
+             arr =  new Array();
+        }
+        else{
+            res = localStorage.getItem("li");
+            arr = JSON.parse(res);
+            display();
+        }
+
+        function Product(prodname,prodprice){
+                this.prodname = prodname;
+                this.prodprice = prodprice;
+            }   
+
+        
+        add.addEventListener("click",function(){
+             name = document.getElementById("prodname").value;
+             price = document.getElementById("prodprice").value;
+
+            let obj = new Product(name,price);
+            arr.push(obj);
+            let jobj = JSON.stringify(arr);
+            localStorage.setItem("li",jobj);   
+            display();    
+            document.getElementById("prodname").value = "";
+            document.getElementById("prodprice").value = "";
+        })
+
+        function display(){
+            let val = JSON.parse(localStorage.getItem("li"));
+                var str = ""; 
+                for(let i=0;i<val.length;i++){
+                    str+="<li>"+val[i].prodname+"-"+val[i].prodprice+"</li>";
+                }
+                list.innerHTML = str;
+        }
+
+        list2 = document.querySelectorAll("li");
+        for(let i=0;i<list2.length;i++){
+            list2[i].addEventListener("click",function(event){
+                targetlist = event.target.textContent;
+
+                arr2 = targetlist.split("-");
+                for(let i=0;i<arr2.length;i++){
+                    document.getElementById("prodname").value = arr2[0];
+                    document.getElementById("prodprice").value = arr2[1];
+                }
+            })
+        }
+
+        update.addEventListener("click",function(){
+            let newval1 = document.getElementById("prodname").value;
+            let newval2 = document.getElementById("prodprice").value;
+            
+            let val2 = JSON.parse(localStorage.getItem("li"));
+            for(let i in val2){
+                if(val2[i].prodname == newval1){
+                    val2[i].prodprice = newval2;
+                }
+            }
+            let vals = JSON.stringify(val2);
+            localStorage.setItem("li",vals)
+            display();
+
+        })
+
+        del.addEventListener("click",function(){
+            let newval1 = document.getElementById("prodname").value;
+            let newval2 = document.getElementById("prodprice").value;
+
+            let val2 = JSON.parse(localStorage.getItem("li"));
+            for(let i in val2){
+                if(val2[i].prodname == newval1){
+                    val2.splice(i,1);
+                }
+            }
+            localStorage.setItem("li",JSON.stringify(val2));
+            display();
+        })
+
+        // let div1 = document.getElementById("div1");
+        // window.addEventListener("storage",function(){
+        //     div1.innerHTML = "<br>Key="+event.key+
+        //     "<br>OldValue="+event.oldValue+
+        //     "<br>NewValue="+event.newValue+
+        //     "<br>Storage="+event.storageArea+
+        //     "<br>Url="+event.url;
+        // })
+
+
+    </script>
+</body>
+</html>

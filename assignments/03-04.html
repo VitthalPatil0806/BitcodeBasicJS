@@ -1,0 +1,179 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="sel"></select>
+    <div id="bookcategory"></div>
+    <script>
+        let sel = document.getElementById("sel");   
+        let bookcategory = document.getElementById("bookcategory");
+        let arr =  [{category:"history",price:"130",bookName:"Freedom Of India"},
+                    {category:"science",price:"260",bookName:"Evlolutional Theory"},
+                    {category:"Mathematics",price:"80",bookName:"Matrices"},
+                    {category:"science",price:"170",bookName:"Micropartics"},
+                    {category:"history",price:"140",bookName:"Greate Warrior"}]
+
+                    let arr2;
+                    let str = "<option></option>";
+                    for(let i=0;i<arr.length;i++){
+                         arr2 = arr[i];
+                         str += "<option class='del'>"+arr2.category+"</option>";
+                         sel.innerHTML = str;
+                    }
+
+                    
+                    sel.addEventListener("change",fun1,false);
+                    function fun1(){
+                        let selectCategory = this.value;
+
+                        // let book = arr.filter(ele=>ele.category === selectCategory);
+                        // console.log(book);
+                        // let bookdetail = "<ul>";
+                        //     book.forEach(b=>{
+                        //         bookdetail += "<li>" + b.bookName + "-" + b.price + "</li>";
+                        //     });
+                        // bookdetail += "</ul>";
+                        // bookcategory.innerHTML = bookdetail;
+
+                        // for(let i=0;i<arr.length;i++){
+                        //     if(arr[i].category === selectCategory){
+                        //         str = "";
+                        //         str += arr[i].bookName+"-"+arr[i].price;
+                        //         bookcategory.innerHTML = str
+                        //     }
+                        // }
+
+                        let str = "";
+                        let book = arr.filter(ele=>ele.category===selectCategory);
+                        book.forEach(
+                            b => str += "<input type='checkbox'>"+ b.bookName+"-"+b.price+"<br>",
+                        )
+                        bookcategory.innerHTML = str 
+                        let check = document.querySelectorAll("input[type='checkbox']");
+                        
+                    }
+                    
+
+
+                    
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, th, td{
+            border: 1px double black;
+        }
+    </style>
+</head>
+<body>
+
+    <select name="" id="sel"></select> 
+    <input type="button" value="New" id="btn2">
+    <br><br>
+    <table id="tbl">
+        <thead>
+            <tr>
+                <th>Taskname</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbody">
+            
+        </tbody>
+    </table> <br>
+
+    <div id="area"></div>
+    <script>
+        let sel = document.getElementById("sel");
+        let tbody = document.getElementById("tbody");
+        let btn2 = document.getElementById("btn2");
+        btn2.addEventListener("click",fun2,false);
+        let area = document.getElementById("area");
+        
+        
+        let arr = [
+            {subject:"React",Taskname:"DesignPage",date:"20-03-2024",status:"pending"},
+            {subject:"java",Taskname:"ApplyLogic",date:"14-02-2024",status:"pending"},
+            {subject:"nodejs",Taskname:"CreatePage",date:"05-4-2024",status:"pending"},
+            {subject:"javascript",Taskname:"Dom",date:"12-01-2024",status:"pending"},
+            {subject:"php",Taskname:"HtmlDesign",date:"03-02-2024",status:"pending"}
+        ]
+        let str = "<option></option>";
+        for(let i=0;i<arr.length;i++){
+            str += "<option>"+arr[i].subject+"</option>";
+            sel.innerHTML = str;
+        }
+
+        sel.addEventListener("change",fun1,false);
+        var str2 = ""
+        function fun1(){
+            let currentval = this.value;
+            
+            let arr2 = arr.filter(ele=>ele.subject === currentval);
+            arr2.forEach(e=>
+            str2+= "<tr>"+
+                "<td>"+e.Taskname+"</td>"+
+                "<td>"+e.date+"</td>"+
+                "<td>"+"<input type='checkbox' id='checme'>"+" "+e.status+"</td>"
+                 +"</tr>"
+            )
+            tbody.innerHTML = str2;
+            let check = document.getElementById("checme");
+            check.addEventListener("change",fun1,false);
+            function fun1(event){
+                if(check.checked == true){
+                    tbody.style.backgroundColor = "green";
+                    arr2.forEach(
+                        e=>console.log(e.status["pending"] = "completed")
+                    )
+                    console.log(arr2);
+                }
+                else{
+                    tbody.style.backgroundColor = "orange";
+                    arr2.forEach(
+                        e=>e.status.value = "pending"
+                    )
+                }
+            }
+        }
+
+        function fun2(){
+            let inpt = "<input type='text' id='txt' placeholder='enter new Task'>";
+            let insert = "<input type='button' id='inbtn' value='insert'>"
+            area.innerHTML = inpt + " " + insert;
+
+            let insert2 = document.getElementById("inbtn");
+            insert2.addEventListener("click",fun3,false);
+        }
+
+        
+
+        function Newdata(task){
+            this.Taskname = task;
+        }
+        function fun3(){
+            let txt = document.getElementById("txt").value;
+            let obj = new Newdata(txt);
+            arr.push(obj);
+            for(let i=0;i<arr.length;i++){
+                console.log(arr[i]);
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    #demo{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+    <div id="demo"></div>
+    <br>
+    <label for="">dotted</label>
+    <input type="radio" name="border" value="dotted"> <br>
+
+    <label for="">double</label>
+    <input type="radio" name="border" value="double"><br>
+
+    <label for="">dashed</label>
+    <input type="radio" name="border" value="dashed">
+
+    <script>
+        let demo1 = document.getElementById("demo");
+
+        // function fun1(){
+        //     demo1.style.border = "dotted";
+        // }
+
+        // function fun2(){
+        //     demo1.style.border = "double"
+        // }
+
+        // function fun3(){
+        //     demo1.style.border = "dashed"
+        // }
+
+        let val = document.querySelectorAll("input[name='border']");
+        console.log(val);
+        val.forEach(ele=>{
+            ele.addEventListener("click",function(){
+                let val1 = this.value;
+                demo1.style.border = val1;
+            })
+        })
+    </script>
+</body>
+</html>

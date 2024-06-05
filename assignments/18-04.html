@@ -1,0 +1,82 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        video{
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <video src="../video.mp4" controls onended="funend()"></video>
+    <input type="button" value="pause/play" id="btn" onclick="fun()">
+    <input type="button" value="foreword" id="foreword">
+    <input type="button" value="rewind" onclick="rewind()">
+
+    <script>
+        let vd = document.querySelector("video");
+        let btn = document.getElementById("btn");
+        let foreword = document.getElementById("foreword");
+       function fun(){
+        if(vd.paused){
+            vd.play();
+            btn.value = "pause";
+        }
+        else if(!vd.paused){
+            vd.pause();
+            btn.value = "play"
+        }
+       }
+       foreword.addEventListener("click",function(){
+        vd.currentTime = vd.currentTime+10;
+       })
+
+       function rewind(){
+        vd.currentTime = vd.currentTime-10;
+       }
+
+       function funend(){
+        btn.value = "play";
+       }
+    </script>
+</body>
+</html> -->
+
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        video{
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <video src="./video.mp4" controls></video>
+
+    <script>
+        let vd = document.querySelector("video");
+        vd.addEventListener("mouseover", fun1);
+        vd.addEventListener("mouseout",fun1);
+
+        function fun1(event){
+            if(event.type == "mouseover"){
+                vd.play();
+            }
+            else if(event.type == "mouseout"){
+                vd.pause();
+            }
+        }
+    </script>
+</body>
+</html>  -->
+
+

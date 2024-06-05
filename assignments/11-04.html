@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+       #table,th,tr,td{
+        border: 1px solid black;
+       }
+    </style>
+</head>
+<body>
+    <select name="" id="select">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br><br>
+    <div id="area"></div>
+    <input type="button" value="create" id="btn"><br><br>
+    <div id="area2"></div>
+    <input type="button" value="AddRow" id="btn2"><br><br>
+    <div id="area3"></div>
+
+    <script>
+    let ops = document.getElementById("select");
+    let area = document.getElementById("area");
+    let area2 = document.getElementById("area2");
+    let area3 = document.getElementById("area3");
+    let btn = document.getElementById("btn");
+    let btn2 = document.getElementById("btn2");
+    btn.style.display = "none";
+    btn2.style.display = "none";
+    let tbl = document.createElement("table");
+
+    ops.addEventListener("change",function(){
+        let value = this.value;
+        area.innerHTML = "";
+        btn.style.display = "block";
+        for(let i=0;i<value;i++){
+            inpt = document.createElement("input");
+            inpt.setAttribute("type","text");
+            let br = document.createElement("br");
+            area.appendChild(inpt);
+            area.appendChild(br);
+            
+
+        }
+
+
+        btn.addEventListener("click",function(){
+                btn2.style.display = "block";
+
+                let inpts = area.querySelectorAll("input");
+                for(let i=0;i<inpts.length;i++){
+                     inbox = document.createElement("input");
+                    let br = document.createElement("br");
+                    inbox.setAttribute("type","text");
+                    area3.appendChild(inbox);
+                    area3.appendChild(br);
+                }
+
+                tbl.setAttribute("id","table")
+                let thead = document.createElement("thead");
+
+                let inputs = area.querySelectorAll("input");
+
+                
+                for(let i=0;i<inputs.length;i++){
+                    let th = document.createElement("th");
+                    th.innerHTML = inputs[i].value;
+                    thead.appendChild(th);
+                    tbl.appendChild(thead);
+                    area2.appendChild(tbl);
+                }
+    
+             })
+
+    })
+
+    let tbody = document.createElement("tbody");
+    btn2.addEventListener("click",function(){
+        let inputs = area3.querySelectorAll("input");
+        // let inputs2 = area3.querySelectorAll("input")
+        let tr = document.createElement("tr");
+        
+        for(let i=0;i<inputs.length;i++){
+            let td = document.createElement("td");
+            td.innerHTML = inputs[i].value;
+            tr.appendChild(td);
+            tbody.appendChild(tr);
+        }
+        tbl.appendChild(tbody);
+    })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input[type="email"]:invalid{
+            outline:  solid red 2px;
+        }
+        input[type="email"]:valid{
+            outline:  solid green 2px;
+        }
+        input[type="text"]:focus{
+            outline: solid blue 2px;
+        }
+        input::placeholder{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <input type="email">
+    Color:<input type="text" list="list1" placeholder="enter text">
+    <datalist id="list1">
+        <option>red</option>
+        <option>yellow</option>
+        <option>orange</option>
+        <option>black</option>
+    </datalist>
+
+    <!-- setcustomvalidity
+    preventDefault
+    validity.rangeUnderflow -->
+
+    <!-- audio video tags -->
+    <!-- video - autoplay muted duration pause ended autoplay loop currentTime controls volume muted poster width
+    height videoWidth videoHeight-->
+
+    <!-- audio video elemenets add new new media options to html5 apps that allows that allow 
+        you to ise audio/video without plugins while providing common 
+        - media is restricted by http cross origin resource sharing.
+        - full screen video is not scriptable bcox it could be considered a security violation to let a 
+        scriptable element take over the full screen
+        
+        Advantages:
+        -->
+</body>
+</html>

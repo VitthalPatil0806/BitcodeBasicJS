@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            border: 1px double black;
+            padding: 5px;
+            border-radius: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="name" placeholder="name"><br><br>
+        <input type="text" id="email" placeholder="email"><br><br>
+        <input type="text" id="password" placeholder="password"><br><br>
+        <input type="date"  id="dob"><br><br>
+        <input type="button" value="signup" id="signup"><br><br>
+        <a href="./loginform.html">login</a>
+    </div>
+</body>
+
+<script>
+    let signup = document.getElementById("signup");
+
+    if(localStorage.getItem("data")==undefined){
+        arr = new Array();
+    }
+    else{
+        res = localStorage.getItem("data");
+        arr = JSON.parse(res);
+    }
+
+    function Signup(name,email,password,dob){
+            this.name = name;
+            this.email = email;
+            this.password = password;
+            this.dob = dob;
+        }
+
+    signup.addEventListener("click",function(){
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let dob = document.getElementById("dob").value;
+
+    if(name||email||password||dob !== ""){
+    let obj = new Signup(name,email,password,dob);
+    arr.push(obj);
+    let jobj = JSON.stringify(arr);
+    localStorage.setItem("data",jobj);
+    }
+
+    })
+</script>
+</html>

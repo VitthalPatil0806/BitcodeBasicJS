@@ -1,0 +1,99 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+        }
+        #div2{
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+        }
+        img{
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" ondragover="fundragover(event)" ondrop="fundrop(event)">
+        <img src="../img2.jpg" id="img1" ondragstart="fundragstart(event)" alt="">
+    </div>
+    <div id="div2" ondragover="fundragover(event)" ondrop="fundrop(event)"></div>
+</body>
+<script>
+   function fundragstart(event){
+    event.dataTransfer.setData("text/plain",event.currentTarget.id);
+   }
+   function fundragover(event){
+    event.preventDefault();
+   }
+   function fundrop(event){
+    var val2 = event.dataTransfer.getData("text/plain");
+    var currentdiv = event.currentTarget;
+    var fulltag = document.getElementById(val2);
+
+    if(currentdiv.id === "div1"){
+        if(!currentdiv.contains(fulltag)){
+            currentdiv.appendChild(fulltag);
+        }
+    }else if(currentdiv.id === "div2"){
+        if(!currentdiv.contains(fulltag)){
+            currentdiv.appendChild(fulltag);
+        }
+    }
+   }
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <ul ondragstart="funstart(event)">
+        <li draggable="true">vitthal-100</li>
+        <li draggable="true">adarsh-60</li>
+        <li draggable="true">nilesh-90</li>
+        <li draggable="true">dhiraj-80</li>
+    </ul><br>
+
+    <div ondragover="funover(event)" ondrop="fundrop(event)" id="div1"></div>
+    <div ondragover="funover(event)" ondrop="fundrop(event)" id="div2"></div>
+
+    <script>
+        function funstart(event){
+          event.dataTransfer.setData("text/plain",event.target.textContent);
+        }
+        function funover(event){
+            event.preventDefault();
+        }
+        function fundrop(event){
+            var str = event.dataTransfer.getData("text/plain",event.target.textContent);
+            var arr = str.split("-");
+            if(event.currentTarget.id == "div1"){
+                document.getElementById("div1").innerHTML += arr[0]+"<br>";
+            }
+            else if(event.currentTarget.id == "div2"){
+                document.getElementById("div2").innerHTML += arr[1]+"<br>";
+            }
+        }
+    </script>
+</body>
+</html>

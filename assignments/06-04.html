@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div{
+            border: 1px solid black;
+            height: 20px;
+            width: 50px;
+            
+        } */
+    </style>
+</head>
+<body>
+    <div id="hour"></div><div id="minutes"></div><div id="second"></div>
+    
+    <script>
+        setInterval(function(){
+        let second = document.getElementById("second");
+        let minute = document.getElementById("minutes");
+        let hour = document.getElementById("hour");
+
+        let dat = new Date();
+
+        let seconds = dat.getSeconds();
+        second.innerHTML = seconds;
+
+        let minutes = dat.getMinutes();
+        minute.innerHTML = minutes;
+
+        let hours = dat.getHours();
+        hour.innerHTML = hours;
+        },1000)
+    </script>
+</body>
+</html>

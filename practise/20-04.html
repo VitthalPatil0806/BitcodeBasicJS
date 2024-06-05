@@ -1,0 +1,77 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="localstore" onclick="funlocal()"><br><br>
+    <input type="button" value="sessionstore" onclick="funsession()"><br><br>
+    <div></div>
+
+    <script>
+        let div = document.querySelector("div");
+
+        function funlocal(){
+            if(window.localStorage.clickCount){
+                localStorage.clickCount = parseInt(localStorage.clickCount)+1;
+            }
+            else{
+                localStorage.clickCount = 1;
+            }
+            div.innerHTML = localStorage.clickCount;
+        }
+
+        function funsession(){
+            if(window.sessionStorage.clickCount){
+                sessionStorage.clickCount = parseInt(sessionStorage.clickCount)+1;
+            }
+            else{
+                sessionStorage.clickCount = 1;
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Name: <input type="text" id="txtname"><br><br>
+    Price: <input type="text" id="txtprice"><br><br>
+    <input type="button" value="add" onclick="funadd()"><br><br>
+    <ul id="list"></ul>
+
+    <script>
+        let list = document.getElementById("list");
+
+        if(localStorage.getItem("list") == undefined){
+            var arr = [];
+        }
+        else{
+            res = localStorage.getItem("list");
+            arr = JSON.parse(res);
+            display();
+        }
+
+        function Product(name,pr){
+            this.prodname = name;
+            this.prodprice = pr;
+        }
+
+        function funadd(){
+            txtname = document.getElementById("txtname").value;
+            txtprice = document.getElementById("txtprice").value;
+
+            
+        }
+    </script>
+
+</body>
+</html>

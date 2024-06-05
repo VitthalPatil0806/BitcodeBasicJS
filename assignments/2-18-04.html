@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input[type="email"]:valid{
+            outline: green  solid 2px;
+        }
+        input[type="email"]:invalid{
+            outline: red solid 2px;
+        }
+    </style>
+</head>
+<body>
+    <form action="submit" method="get">
+        name: <input type="text" name="name"><br><br>
+        password: <input type="password" name="password"><br><br>
+        email: <input type="email" name="email"><br><br>
+        dob: <input type="date" name="dob"><br><br>
+        city: <input type="text" name="city" list="list1"><br><br>
+        <datalist id="list1"><br><br>
+            <option>kolhapur</option>
+            <option>pune</option>
+            <option>sangli</option>
+            <option>satara</option>
+        </datalist>
+        <input type="range" min="10" max="100" step="10" name="range" id="rng" value="50" oninput="range1.value = rng.value">
+        <output id="range1"></output><br><br>
+        <input type="number" name="number"><br><br>
+        <progress value="20" min="10" max="50"></progress><br><br>
+        <input type="submit" value="submit1">
+        <input type="submit" value="submit2" formnovalidate>
+    </form>
+</body>
+</html>

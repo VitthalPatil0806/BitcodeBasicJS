@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [{roll:12,name:"vitthal",id:4},{roll:2,name:"udhav",id:1}];
+        console.log(arr,typeof(arr));
+
+        let jobj = JSON.stringify(arr);
+        console.log(jobj,typeof(jobj));
+        //to json obj
+
+        let obj = JSON.parse(jobj);
+        console.log(obj,typeof(obj),obj[0]);
+        //to native obj
+    </script>
+</body>
+</html>

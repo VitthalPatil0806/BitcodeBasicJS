@@ -1,0 +1,197 @@
+<html>
+<head>
+    <title>Homework 22 </title>
+</head>
+<body>
+    <table id="t1" border="2" style="width: 400px;">
+    </table>
+    <br><br>
+    <div id="d1" style="height: 250px; width: 400px; border: 3px solid red;">
+        <br>
+        <b>Roll No :-</b> <input type="text" id="txtroll" readonly style="height: 30px;" > <br><br>
+        <b>Name :- &nbsp&nbsp </b><input type="text" id="txtname" readonly style="height: 30px;"> <br><br>
+        <b>Marks :- &nbsp&nbsp</b><input type="number" id="txtmarks" style="height: 30px;"><br><br>
+        <input type="button" value="Update" style="height: 40px; width: 80px;" onclick="funUpdate()"><br>
+        <input type="button" value="Delete" style="height: 40px; width: 80px;" onclick="funDelete()">
+    </div><br><br>
+
+    <input type="button" value="Add Record" style="height: 50px; width: 100px;" onclick="funAdd()"><br><br>
+
+    <div id="d2" style="width: 400px; border: 3px solid orange; display: none;"><br>
+        
+        Enter Roll No. :- <input type="text" id="newroll" style="height: 30px;"> <br><br>
+        Enter Name :- &nbsp&nbsp&nbsp <input type="text" id="newname" style="height: 30px;"> <br><br> 
+        Enter Marks :- &nbsp&nbsp <input type="number" id="newmarks" style="height: 30px;"><br><br>
+        <input type="button" id="ins" value="Insert" style="height: 50px; width: 100px;" onclick="funInsert()">
+        <input type="button" id="plus" value="  +  " style="height: 50px; width: 100px;" onclick="funplus()">
+    </div>
+    <br><br>
+    <div id="d3" style="border: 2px solid green; width: 400px; display: none;">
+
+    </div>
+
+    <script>
+        var table = document.getElementById("t1");
+        var div = document.getElementById("d1");
+        var div1 = document.getElementById("d2");
+
+        var student =  [{rollno : "1",name : "Shreeraj Ghadge", marks : 100},
+                        {rollno : "2",name : "Sumit Ranaware", marks : 90},
+                        {rollno : "3",name : "Siddhesh Dedge", marks : 94},
+                        {rollno : "4",name : "Rajdatta Jadhav", marks : 80},
+                        {rollno : "5",name : "Indrajeet Dighe", marks : 76},
+                        {rollno : "6",name : "Siddhant Patil", marks : 63}]
+        display();
+
+        function display()
+        {
+            var str = "<tr> <td><b>Roll No. </b></td> <th><b>Name</b> </td> <td onclick=funclick()><b>Marks</b> </td> <tr>";
+            for(i=0;i<student.length;i++)
+            {
+                str += "<tr><td>" + student[i].rollno + "</td><td>" + student[i].name + "</td><td>" + student[i].marks + "</td></tr>";
+            }
+            table.innerHTML = str;
+
+            var trs = table.querySelectorAll("tr");
+            for(i=1;i<trs.length;i++)
+            {
+                trs[i].addEventListener("mouseover",funover,false);
+            }
+        }
+
+        function funclick()
+        {
+            sort();
+            display();
+            console.log(student);
+        }
+
+        function sort()
+        {
+            for(i=0;i<student.length;i++)
+            {
+                for(j=i+1;j<student.length;j++)
+                {
+                    if(student[i].marks < student[j].marks)
+                    {
+                        var temp = student[j];
+                        student[j] = student[i];
+                        student[i] = temp;
+                    }
+                }
+            }
+        }
+        
+
+        function funover(event)
+        {
+            tr = event.currentTarget;
+            td = tr.children;
+
+            rollno = td[0].textContent;
+            name = td[1].textContent;
+            marks = td[2].textContent;
+
+            console.log(name);
+
+            document.getElementById("txtroll").value = rollno;
+            document.getElementById("txtname").value = name;
+            document.getElementById("txtmarks").value = marks;
+        }
+
+        function funUpdate()
+        {
+            var rno = document.getElementById("txtroll").value
+            var name = document.getElementById("txtname").value
+            var marks = document.getElementById("txtmarks").value
+
+            for(i=0;i<student.length;i++)
+            {
+                if(rno == student[i].rollno)
+                {
+                    student[i].marks = marks;
+                }
+            }
+            display();
+        }
+
+        function funDelete()
+        {
+            var rno = document.getElementById("txtroll").value
+            var name = document.getElementById("txtname").value
+            var marks = document.getElementById("txtmarks").value
+
+            for(i=0;i<student.length;i++)
+            {
+                if(rno == student[i].rollno)
+                {
+                    student.splice(i,1);
+                }
+            }
+            display();
+
+        }
+
+        function funAdd()
+        {
+            div1.style.display = "block";
+        }
+
+        function funInsert()
+        {
+            var newroll = document.getElementById("newroll").value;
+            var newname = document.getElementById("newname").value;
+            var newmarks = document.getElementById("newmarks").value;
+
+            console.log(newroll);
+
+            student.push({rollno : newroll , name : newname , marks : newmarks});
+
+            var div3 = document.getElementById("d3");
+            var txtarr = div3.querySelectorAll("input[type=text]");
+
+            for(i=0;i<txtarr.length;i=i+3)
+            {
+                student.push({rollno : txtarr[i].value , name : txtarr[i+1].value , marks : parseInt(txtarr[i+2].value)});
+            }
+
+            display();
+        }
+
+        function funplus()
+        {
+            var plus = document.getElementById("plus");
+
+            var txt1 = document.createTextNode("Enter Roll No. :-")
+            var newrolltxt = document.createElement("input");
+            newrolltxt.setAttribute("type","text");
+            
+            var txt2 = document.createTextNode("Enter Name:-\u00A0\u00A0\u00A0\u00A0\u00A0")
+            var newnametxt = document.createElement("input");
+            newnametxt.setAttribute("type","text");
+            
+            var txt3 = document.createTextNode("Enter Marks:-\u00A0\u00A0\u00A0\u00A0")
+            var newmarkstxt = document.createElement("input");
+            newmarkstxt.setAttribute("type","text");
+
+            var br = document.createElement("br");
+            var br1 = document.createElement("br");
+            var br2 = document.createElement("br");
+
+            var div3 = document.getElementById("d3");
+            div3.appendChild(txt1);
+            div3.appendChild(newrolltxt);
+            div3.appendChild(br);
+            div3.appendChild(txt2);
+            div3.appendChild(newnametxt);
+            div3.appendChild(br1);
+            div3.appendChild(txt3);
+            div3.appendChild(newmarkstxt);
+            div3.appendChild(br2);
+
+            div3.style.display = "block";
+
+        }
+    </script>
+</body>
+</html>

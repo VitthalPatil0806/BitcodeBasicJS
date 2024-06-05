@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table,th,tr,td{
+            border: 1px double black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>vitthal</td>
+                <td>98.00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>sushant</td>
+                <td>70.00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>kartik</td>
+                <td>89.43</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="val"></p>
+    
+    <script>
+        let row = document.querySelectorAll("td");
+        let val1 = document.getElementById("val")
+        row.forEach(e=>e.addEventListener("click",function(){
+            let val = this.textContent;
+            let val2 = this.parentElement.parentElement.previousElementSibling.firstElementChild.children[this.cellIndex].textContent;
+            val1.innerHTML +=  val2 +": "+ val + "</br>"}));
+    </script>
+</body>
+</html> 
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- cookies -->
+    <input type="text" id="txtname"><br>
+    <input type="text" id="txtpass">
+    <input type="button" value="cookiesCreated" onclick="funCreate()">
+    <input type="button" value="cookiesDeleted" onclick="funDelete()">
+    <input type="button" value="cookiesRead" onclick="funRead()">
+
+    <script>
+        function funCreate(){
+            let name = document.getElementById("txtname").value;
+            let pass = document.getElementById("txtpass").value;
+            document.cookie = name+"="+pass+";expires=Sat 20,Apr 2024 12:0:0 UTC;path=/;";
+            alert("cookie created!!!");
+        }
+
+        function funDelete(){
+            document.cookie = "name=;expires=sat 20,apr 2024 0:0:0;path=/";
+            alert("cookie deleted!!!");
+        }
+
+        function funRead(){
+            var cookiename = prompt("enter cookie name");
+            var cookievalue = getCookievalue(cookiename);
+            alert(cookievalue);
+        }
+
+        function getCookievalue(cookiename){
+            str = document.cookie;
+            var arr = str.split(";");
+            console.log(arr);
+            for(let i=0;i<arr.length;i++){
+                var valArr = arr[i].split("=");
+                valArr[0] = valArr[0].trim();
+                if(valArr[0]==cookiename){
+                    return valArr[1];
+                }
+            }
+        }
+
+
+        // storage apis
+        // drowpbacks of cookies - 
+        // very small amount of data,
+        // the cookies are transferred back and forth even thow it is not needed on the server side
+        // solution -
+        // - by using session storage or local storage we can store large amount of data in js objects that
+        // persist across page load
+        // - large amount of data is stored upto few mps
+        // - data is not transmitted across the network
+    </script>
+</body>
+</html>

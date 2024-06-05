@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. typescript is typed superset of javascript that compiles to plain javascipt
+         2. adds additional features like static type (optional), class, mmodule etc. to javascpt 
+        
+        let, var, const,
+        const works for variable. to make the constant object u can use freeze method. freeze is not
+        allowed in latest typescript version 
+        
+        let str = `hello this is typescript`;
+        console.log(`output${str}`)
+    
+        arrow function
+        var add=(a:number,b:number)=>{
+            console.log(a+b);
+        }
+        add(1,2);
+        add(aaa,bbb)// not allowed
+        
+        the value of this stabilizes in set time out also bcoz of fat arrow functions.
+        
+        const obj = {color:red};
+        obj.color = "green"; // const is not working on object
+    
+        const obj = Object.freeze({color:red});
+        obj.color = "green"; //now it shows error while changing the value of object key which is const type.
+    
+        data types - 
+        var x:number;
+        var x1:string;
+        var x2:true;
+        var x3:void;
+        
+        function fun1(x:number,y:number):number // <- return type
+        {
+            return x+y;
+        }
+    
+        var list: Array<number> = [1,2,3]
+        var list:number[]=[1,2,3]
+        
+        enum(enumaration is an labeled array)
+    
+        tuple:tuple types allow u to express an array where where the type of fixed numer
+    
+        type assertion -
+        type asertion is a hint to tranpilar about the type of something 
+        let value: any = "botcode technologies"
+    
+        class - class can have attributes and methods
+                
+        class Student{
+            name:string="vitthal";
+            rollno:number=0
+            constructor(str,rno){
+                this.name = str;
+                this.rollno = str;
+                console.log("constructor");
+            }
+            getName():string{
+                return this.name;
+            }
+            setDetails
+        }
+        class is a template which will have variable,attributes and methods
+        object is instance of class which physically exist which will have its attribute and behaviour
+        consteucor is special function which will exicuted automatic which have no return type,it allowcate memory
+        to abject and initializes membory.
+        * in typescript we will have onle one constructor in one class
+    
+        access specifires
+        public - it is default can be access outside of class
+        private - only member function of the class it's declared in can see this
+        protected - only the class is declared in and any class that inherites from that class can see this
+    
+        concrit class having all methods implimentation written thst is all concrit methods
+        if implementation of method needs to be ommited in base class then declare that method as abstract
+        (abstract method will not have implementation)
+        abstract abfun();
+        if a class contains atleast one abstract method class becomes abstract(abstract class will have
+        abstract method and concrit method as well)
+        abstract method must be implemented in derived class
+        u can't create an object of abstract class
+        
+        interface
+        interface Human{
+            firstName:"vitthal";
+            lastname:"patil";
+            name?:Function;
+            isLate?:(time:Date):Function;}
+        
+            implementing class must implement all methods of interfaces.
+
+            interface shape(){
+
+            }
+            class person implements shape,I2{
+                shape(){
+
+                }
+                I2(){
+
+                }
+            }
+        }
+    
+        generics - able to create a component that can work over the variety of types rather than a single one.
+        
+        function identity<T>(arg:T):T{
+            return arg;
+        }
+
+        ternary operator
+        (a>b)?'a is greter':'a is samller';
+
+        array distructuring to extract the data from arrays and objects
+        let arr = ['red','orange','white'];
+        let[val1,val2,val3] = arr;
+        let[val1,,val3] = arr;
+        console.log(val1) // expected outout 'red'
+        console.log(val3) // expected output 'white'
+
+        distructuring in objects
+        let obj = {'hii','hello','hey'}
+        let {val1,val2,val3} = obj;
+        console.log(val2) // expected output hello
+        let {val1='how',,val3} = obj;
+
+        array methods
+        let arr = ['red','orange','white'];
+        let newarr = arr.map(ele=>ele+"s");
+
+        let newarr2 = arr.filter(ele=>ele.startWith("o"));
+        
+        reduce method iterates over all the elements of an array and takes action on each iteration
+
+        let arr = [1,2,3,4,5];
+       let res = arr.reduce((sum,curent)=>sum+=curent);
+       console.log(res);
+
+       npx - node package execute. it is basically node package runner which allows to run javascript packages without
+       install in it
+
+       a package manager such as yarn or npm.it let you take advantage of a vast ecosystem of third party package 
+       bable - it is webpack or parcel it will write module code and bundle together.
+       webpack - webpack is static module bundler for modern js app.
+
+       components in react - 
+       building blocks
+       it is reusable
+       it keeps app clean and seperate
+        
+    -->
+         
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- html5 web worker provided background processing  capabilities to web application and typically 
+    run on seperate threads so thst js app using web worker can take advantage of multicore cpu
+    - long running task into web workers also avoid 
+    - web workers dont have direct access to web page -->
+
+    <!-- <input type="button" value="click" id="btn"><br>
+    <div id="div1"></div>
+
+    <script>
+        let div = document.getElementById("div1");
+        let btn = document.getElementById("btn");
+        
+         w = new Worker("demo.js");
+        btn.addEventListener("click",function(){
+                w.postMessage("hello from html...");
+        })
+        w.addEventListener("message",function(event){
+            var datas = event.data;
+            div.innerHTML = datas;
+        })
+    </script> -->
+
+    
+    <input type="button" value="start" onclick="funstart()">
+    <input type="button" value="stop" onclick="funstop()">
+    <div id="div1"></div>
+
+    <script>
+        let d1 = document.getElementById("div1");
+    
+        var w;
+        function funstart(){
+            if(w==undefined){
+            w = new Worker("demo.js");
+        }
+        w.onmessage = function(event){
+            d1.innerHTML = event.data;
+        }
+    }
+        function funstop(){
+            w.terminate();
+            w=undefined;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt"><br>
+    <input type="button" value="add" id="btn1">
+    <ul id="list">
+        <li>Red</li>
+        <li>Orange</li>
+        <li>Blue</li>
+        <li>Yollow</li>
+    </ul>
+
+    <script>
+        let list = document.getElementById("list");
+        var txt = document.getElementById("txt");
+        let btn = document.getElementById("btn1");
+        btn.addEventListener("click",fun1,false);
+
+        function fun1(){
+            let li = document.createElement("li");
+            let txt1 = document.createTextNode(txt.value);
+            li.appendChild(txt1);
+            list.appendChild(li);
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table,tr,th,td{
+            border: 1px double black;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>vitthal</td>
+                <td>98.00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>sushant</td>
+                <td>70.00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>kartik</td>
+                <td>89.43</td>
+            </tr>
+        </tbody>
+    </table> <br> <br>
+
+    <input type="text" id="roll" placeholder="enter roll no">
+    <input type="text" id="name" placeholder="enter name">
+    <input type="text" id="marks" placeholder="enter marks"> <br> <br>
+    <input type="button" value="add" id="btn">
+    
+
+    <script>
+        let roll = document.getElementById("roll");
+        let name = document.getElementById("name");
+        let marks = document.getElementById("marks");
+        let tbl = document.getElementById("tbody");
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click",createRow,false);
+
+        function createRow(){
+            let row = document.createElement("tr");
+            let cell1 = document.createElement("td");
+            let cell2 = document.createElement("td");
+            let cell3 = document.createElement("td");
+
+            let roll1 = document.createTextNode(roll.value);
+            let name1 = document.createTextNode(name.value);
+            let marks1 = document.createTextNode(marks.value);
+
+            cell1.appendChild(roll1);
+            cell2.appendChild(name1);
+            cell3.appendChild(marks1);
+            
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            row.appendChild(cell3)
+            tbl.appendChild(row);
+        }
+
+    </script>
+</body>
+</html> -->
+

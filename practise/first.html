@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="checkbox" value="html"> html<br>
+    <input type="checkbox" value="css"> css<br>
+    <input type="checkbox" value="javscript"> javascript<br>
+    <input type="checkbox" value="react"> react<br>
+    <input type="button" value="click" id="btn" onclick="fun1()">
+    <script>
+    
+    function fun1(){
+        let val1 = document.querySelectorAll("input[type=checkbox]");
+       for(let i=0;i<val1.length;i++){
+        if(val1[i].checked){
+            console.log(val1[i].value);
+        }
+       }
+    }
+
+    // notes
+    // querySelector api have two methos
+    //1. queryselector for return first value only
+    //2. queryselectorall for return array of same values     
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    product name :<input type="text" id="txt"><br>
+    product price :<input type="text" id="price"><br>
+    <input type="button" value="add" id="btn1">
+    <p id="res"></p>
+
+    <script>
+        let txtname = document.getElementById("txt");
+
+        let txtprice = document.getElementById("price").value;
+        let res = document.getElementById("res");
+        
+        let btn1 = document.getElementById("btn1");
+        btn1.addEventListener("click",fun1,false);
+
+        function fun1(){
+            res.textContent = txtname;
+            let arr = new Array();
+            console.log(arr.push(txtname));
+        }
+    </script>
+</body>
+</html>

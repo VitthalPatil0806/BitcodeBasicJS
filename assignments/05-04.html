@@ -1,0 +1,129 @@
+<!-- first
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    table,tr,th,td{
+        border: 1px double black;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>vitthal</td>
+                <td>98.00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>sushant</td>
+                <td>70.00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>kartik</td>
+                <td>89.43</td>
+            </tr>
+        </tbody>
+    </table> <br> <br>
+
+    <script>
+        let td = document.querySelectorAll("td");
+        td.forEach(ele=>ele.addEventListener("click",function(){
+            let val = this.parentElement.remove();
+            
+        }))
+    </script>
+</body>
+</html> -->
+
+<!-- second -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,th,td{
+            border: 1px double black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>vitthal</td>
+                <td>98.00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>sushant</td>
+                <td>70.00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>kartik</td>
+                <td>89.43</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let tbl = document.querySelector("table");
+        tbl.addEventListener("click",function(event){
+            let e = event.target;
+            let tds = e.parentElement.children;
+            let rows = e.parentElement.parentElement.children;
+
+            for(let i=0;i<tds.length;i++){
+                if(e === tds[i]){
+                    a = i;
+
+                }
+            }
+
+            //three rows
+            var i;
+            for( i=0;i<rows.length;i++){
+                 var row = rows[i].children;
+
+            // three cells of individual row
+            for(let j=0;j<row.length;j++){
+                if(a===j){
+                    rows[i].removeChild(row[j]);
+                }
+            }
+            }
+ 
+
+        })
+        
+    </script>
+</body>
+</html> 

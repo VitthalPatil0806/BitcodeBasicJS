@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img1{
+            width: 200px;
+        }
+        div{
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" ondragover="fundragover(event)" ondrop="fundrop(event)" >
+        <img src="../img1.jpg" id="img1" draggable="true" ondragstart="fundragstart(event)" alt="">
+    </div><br>
+    <div id="div2" ondragover="fundragover(event)" ondrop="fundrop(event)" ></div>
+</body>
+<script>
+    function fundragstart(event) {
+        event.dataTransfer.setData("text/plain", event.currentTarget.id);
+    }
+
+    function fundragover(event) {
+        event.preventDefault();
+    }
+
+    function fundrop(event) {
+        // it gets id of image which is transfer through data-transfer
+        var x = event.dataTransfer.getData("text/plain");
+        var targetDiv = event.currentTarget;
+        var draggedElement = document.getElementById(x);
+
+        // If the dropped element is being dropped onto the first div
+        if (targetDiv.id === "div1") {
+            // If the dragged element is not already a child of div1, append it
+            if (!targetDiv.contains(draggedElement)) {
+                targetDiv.appendChild(draggedElement);
+            }
+        } else if (targetDiv.id === "div2") {
+            // If the dropped element is being dropped onto the second div
+            // If the dragged element is not already a child of div2, append it
+            if (!targetDiv.contains(draggedElement)) {
+                targetDiv.appendChild(draggedElement);
+            }
+        }
+    }
+</script>
+
+</html>

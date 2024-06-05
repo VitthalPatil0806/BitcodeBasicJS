@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <p>This is p1</p>
+    <div id="d1">
+        <p>This is p2</p>
+        <p>This is p3</p>
+        <p>This is p4</p>
+    </div>
+    <p>This is p5</p>
+    <input type="button" value="click" onclick="fun1()">
+
+    <script>
+        let d1 = document.getElementById("d1");
+        function fun1(){
+           let p2 =  d1.firstElementChild;
+           let p4 = d1.lastElementChild;
+           let p5 = d1.nextElementSibling;
+           console.log(p5);
+            // d1.appendChild(p2);
+            // p2.parentNode.appendChild(p2);
+            // d1.insertBefore(p2,p4)
+            // document.body.insertBefore(p2,p5);
+            // document.body.replaceChild(p2,p5);
+
+            // let newp = document.createElement("p");
+            // let txt = document.createTextNode("i'm new");
+            // newp.appendChild(txt);
+            // d1.appendChild(newp);
+
+            let nbtn = document.createElement("input");
+            nbtn.setAttribute("type","button");
+            nbtn.setAttribute("value","click");
+            document.body.appendChild(nbtn);
+
+        }
+    </script>
+</body>
+</html>

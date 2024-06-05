@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            border: 1px double black;
+            padding: 5px;
+            border-radius: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="email" id="txtname" placeholder="email"><br><br>
+        <input type="text" id="password" placeholder="Password"><br><br>
+        <input type="button" id="login" value="login"><br><br>
+        <a href="./signupform.html">Signup</a>
+    </div>
+
+    <p id="msg"></p>
+    <script>
+        let login = document.getElementById("login");
+
+        login.addEventListener("click",function(){
+             name = document.getElementById("txtname").value;
+             password = document.getElementById("password").value;
+
+            let jobj = JSON.parse(localStorage.getItem("data"));
+            for(let i in jobj){
+                if(jobj[i].email == name && jobj[i].password == password){
+                    document.getElementById("msg").textContent = "login successful";}
+                // }else if(jobj[i].name !== name && jobj[i].password !== password){
+                //     document.getElementById("msg").textContent = "login unsuccessful please try to signup";
+                // }
+            }
+        })
+    </script>
+</body>
+</html>

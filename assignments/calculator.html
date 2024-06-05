@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text"><br><br>
+    <input type="button" value="1" name="val1">
+    <input type="button" value="2" name="val1">
+    <input type="button" value="3" name="val1">
+    <input type="button" value="+" name="val1">
+    <input type="button" value="*" name="val1">
+    <input type="button" value="=" onclick="calculate()"><br><br>
+
+    <input type="button" value="4" name="val1">
+    <input type="button" value="5" name="val1">
+    <input type="button" value="6" name="val1">
+    <input type="button" value="-" name="val1">
+    <input type="button" value="%" name="val1">
+    <input type="button" value="/" name="val1"><br><br>
+
+    <input type="button" value="7" name="val1">
+    <input type="button" value="8" name="val1">
+    <input type="button" value="9" name="val1">
+    <input type="button" value="0" name="val1">
+    <input type="button" value="." name="val1">
+    <input type="button" value="AC" onclick="clears()"><br><br>
+
+    <script>
+        let numbers = document.querySelectorAll("input[name='val1']");
+        let inbox = document.getElementById("text");
+
+        numbers.forEach(ele=>ele.addEventListener("click",function(){
+
+            if(inbox.value == ""){
+                inbox.value = ele.value;
+            }
+            else{
+                inbox.value = inbox.value + ele.value;
+            }
+        }));
+
+        inbox.addEventListener("keydown",function(event){
+            if(event.keyCode == 13){
+                event.preventDefault();
+                calculate();
+            }
+        })
+
+        function calculate(){
+            let res = inbox.value;
+            let result = eval(res);
+            inbox.value = result;
+        }
+
+        function clears(){
+            document.getElementById("text").value = "";
+        }
+        
+    </script>
+
+</body>
+</html>
